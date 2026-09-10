@@ -1,0 +1,6 @@
+.env
+data/raw/
+data/drafts/
+data/dataset/
+models/
+*.gguf
