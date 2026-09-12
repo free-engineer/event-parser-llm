@@ -4,3 +4,14 @@ data/drafts/
 data/dataset/
 models/
 *.gguf
+
+# Python キャッシュ・バイトコード                                                                                                                    
+__pycache__/                                                                                                                                         
+*.py[cod]
+*$py.class
+
+# 仮想環境
+# .venv/
+
+# pytest キャッシュ
+.pytest_cache/

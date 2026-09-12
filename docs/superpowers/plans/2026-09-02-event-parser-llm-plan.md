@@ -107,6 +107,17 @@ data/drafts/
 data/dataset/
 models/
 *.gguf
+
+# Python キャッシュ・バイトコード                                                                                                                    
+__pycache__/                                                                                                                                         
+*.py[cod]
+*$py.class
+
+# 仮想環境
+.venv/
+
+# pytest キャッシュ
+.pytest_cache/
 ```
 
 - [ ] **ステップ 5: README と journal を作る**
