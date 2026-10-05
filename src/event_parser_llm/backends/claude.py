@@ -37,7 +37,8 @@ def extract(text: str, fetched_on: date) -> dict:
         timeout=TIMEOUT_SEC,
     )
     if proc.returncode != 0:
-        raise RuntimeError(f"claude -p が失敗しました (exit {proc.returncode}): {proc.stderr.strip()[-500:]}")
+        detail = proc.stderr.strip() or proc.stdout.strip()
+        raise RuntimeError(f"claude -p が失敗しました (exit {proc.returncode}): {detail[-500:]}")
     result = json.loads(proc.stdout)
     if result.get("is_error") or "structured_output" not in result:
         raise RuntimeError(f"構造化出力が得られませんでした: {str(result.get('result', ''))[:300]}")
