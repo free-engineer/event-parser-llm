@@ -24,7 +24,7 @@ $ uv run event-parser parse "https://www.mlit.go.jp/report/press/kaiji05_hh_0003
     "summary": "AI・ロボット技術の最新動向や他産業の活用事例を共有し、造船業の将来像を展望するシンポジウム。基調講演、事例発表、パネルディスカッションを実施。オンライン配信あり、要事前登録。"
   },
   "source_url": "https://www.mlit.go.jp/report/press/kaiji05_hh_000347.html",
-  "fetched_on": "2026-10-05",
+  "fetched_on": "2026-09-12",
   "backend": "claude",
   "elapsed_sec": 8.76
 }
