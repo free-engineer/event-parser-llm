@@ -8,24 +8,54 @@
 ## 2026-09-12
 - CLI 実装
 ```
-$ uv run event-parser parse "https://www.my.metro.tokyo.lg.jp/w/000-20260908-266726618" --backend claude
+$ uv run event-parser parse "https://www.mlit.go.jp/report/press/kaiji05_hh_000347.html" --backend claude
 {
   "event": {
-    "title": "秋の東京産を知る旬のスイーツレッスン",
-    "category": "food",
-    "start_date": "2026-10-01",
-    "end_date": "2026-10-01",
-    "start_time": "13:00",
-    "end_time": "15:00",
-    "venue_name": "かわせみ亭",
-    "address": "東京都文京区本駒込",
+    "title": "造船業界におけるAI・ロボティクス普及に向けたシンポジウム",
+    "category": "other",
+    "start_date": "2026-10-06",
+    "end_date": "2026-10-06",
+    "start_time": "13:30",
+    "end_time": "17:30",
+    "venue_name": "東京コンファレンスセンター・品川(大ホール)",
+    "address": null,
     "price": "無料",
-    "organizer": "TOKYO GROWN",
-    "summary": "東京産農林水産物の魅力を体験する地産地消型料理教室。稲城の新高梨のカップスイーツと東京産秋の旬サラダプレートを作り、生産者や「イイシナ」認証制度も紹介。定員5名。"
+    "organizer": "国立研究開発法人海上・港湾・航空技術研究所 海上技術安全研究所、株式会社日本能率協会コンサルティング",
+    "summary": "AI・ロボット技術の最新動向や他産業の活用事例を共有し、造船業の将来像を展望するシンポジウム。基調講演、事例発表、パネルディスカッションを実施。オンライン配信あり、要事前登録。"
   },
-  "source_url": "https://www.my.metro.tokyo.lg.jp/w/000-20260908-266726618",
-  "fetched_on": "2026-09-12",
+  "source_url": "https://www.mlit.go.jp/report/press/kaiji05_hh_000347.html",
+  "fetched_on": "2026-10-05",
   "backend": "claude",
-  "elapsed_sec": 18.23
+  "elapsed_sec": 8.76
+}
+```
+
+## 2026-10-05
+- HTTP API 実装
+```
+# terminal 1
+$ EVENT_PARSER_BACKEND=claude uv run uvicorn event_parser_llm.api:app
+
+# terminal 2
+$ curl -s -X POST localhost:8000/parse -H 'Content-Type: application/json' -d '{"url": "https://www.mlit.go.jp/report/press/kaiji05_hh_000347.html"}'
+
+{
+  "event": {
+    "title": "造船業界におけるAI・ロボティクス普及に向けたシンポジウム",
+    "category": "other",
+    "start_date": "2026-10-06",
+    "end_date": "2026-10-06",
+    "start_time": "13:30",
+    "end_time": "17:30",
+    "venue_name": "東京コンファレンスセンター・品川(大ホール)",
+    "address": null,
+    "price": "無料",
+    "organizer": "国立研究開発法人海上・港湾・航空技術研究所 海上技術安全研究所、株式会社日本能率協会コンサルティング",
+    "summary": "造船業の人手不足対策と生産性向上に向け、AI・ロボット技術の最新動向や他産業の事例を共有するシンポジウム。基調講演、事例発表、進捗報告、パネル討論を行い、オンライン配信もある。事前登録制。"
+  },
+  "source_url": "https://www.mlit.go.jp/report/press/kaiji05_hh_000347.html",
+  "fetched_on": "2026-10-05",
+  "backend": "claude",
+  "elapsed_sec": 9.81
 }
 ```
